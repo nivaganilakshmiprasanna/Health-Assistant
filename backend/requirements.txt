@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+python-multipart
+python-dotenv
+pyjwt[crypto]
+bcrypt
+google-generativeai
+pdfplumber
+pytesseract
+pillow
+httpx
+email-validator

@@ -1,0 +1,164 @@
+/* CSS variables declaring the curated dark health theme */
+:root {
+  --bg-primary: #0a0f1d;
+  --bg-secondary: #111827;
+  --card-bg: rgba(17, 24, 39, 0.65);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --glass-bg: rgba(30, 41, 59, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  
+  --primary: #38bdf8;
+  --primary-hover: #0ea5e9;
+  --primary-glow: rgba(56, 189, 248, 0.15);
+  
+  --secondary: #8b5cf6;
+  --secondary-glow: rgba(139, 92, 246, 0.15);
+  
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --emergency: #dc2626;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --sidebar-width: 280px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.07) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.05) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.03) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+.glass-panel-glow-primary:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 25px 0 rgba(56, 189, 248, 0.15);
+}
+
+.glass-panel-glow-secondary:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 25px 0 rgba(139, 92, 246, 0.15);
+}
+
+/* Custom linear gradient texts */
+.gradient-text-primary {
+  background: linear-gradient(135deg, #f8fafc 30%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-glow {
+  background: linear-gradient(135deg, #38bdf8 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Pulse Animation for active indicators (e.g. emergency alerts, active mics) */
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.pulse-red-glow {
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-cyan {
+  0% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+  }
+}
+
+.pulse-cyan-glow {
+  animation: pulse-cyan 1.8s infinite;
+}
+
+/* Input fields overrides for glass design */
+.glass-input input {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+/* Prevent default browser autofill from overlaying skyblue/blue color on input fields */
+.glass-input input:-webkit-autofill,
+.glass-input input:-webkit-autofill:hover, 
+.glass-input input:-webkit-autofill:focus, 
+.glass-input input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #111827 inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  caret-color: var(--text-primary) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.glass-input fieldset {
+  border-color: var(--card-border) !important;
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.glass-input:hover fieldset {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.glass-input.Mui-focused fieldset {
+  border-color: var(--primary) !important;
+}
