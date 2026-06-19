@@ -11,26 +11,26 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
 # Import backend modules
-from backend.app.config import PORT, UPLOAD_DIR
-from backend.app.database import (
+from app.config import PORT, UPLOAD_DIR
+from app.database import (
     get_db, create_tables, User, Profile, MedicalReport, Medication, LifestyleLog, Goal, HealthScore
 )
-from backend.app.schemas import (
+from app.schemas import (
     UserRegister, UserLogin, UserResponse, Token,
     ProfileCreate, ProfileResponse, MedicationCreate, MedicationLog, MedicationResponse,
     LifestyleLogCreate, LifestyleLogResponse, GoalCreate, GoalResponse, GoalUpdate,
     MedicalReportResponse, HealthScoreResponse, CoordinatorRequest, CoordinatorResponse
 )
-from backend.app.security import (
+from app.security import (
     get_password_hash, verify_password, create_access_token, verify_token
 )
-from backend.app.utils.ocr import perform_ocr
-from backend.app.agents.coordinator import CoordinatorAgent
-from backend.app.agents.nutrition import NutritionAgent
-from backend.app.agents.lifestyle import LifestyleAgent
-from backend.app.agents.medication import MedicationAgent
-from backend.app.agents.analytics import ProgressAnalyticsAgent
-from backend.app.utils.groq_client import generate_text
+from app.utils.ocr import perform_ocr
+from app.agents.coordinator import CoordinatorAgent
+from app.agents.nutrition import NutritionAgent
+from app.agents.lifestyle import LifestyleAgent
+from app.agents.medication import MedicationAgent
+from app.agents.analytics import ProgressAnalyticsAgent
+from app.utils.groq_client import generate_text
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -427,10 +427,10 @@ async def upload_report(
     shared_context["report_analysis"]["extracted_text"] = extracted_text
     
     # Trigger routing manually or let coordinator decide. We run the agents specifically for reports.
-    from backend.app.agents.report import MedicalReportAgent
-    from backend.app.agents.nutrition import NutritionAgent
-    from backend.app.agents.goal_planning import GoalPlanningAgent
-    from backend.app.agents.analytics import ProgressAnalyticsAgent
+    from app.agents.report import MedicalReportAgent
+    from app.agents.nutrition import NutritionAgent
+    from app.agents.goal_planning import GoalPlanningAgent
+    from app.agents.analytics import ProgressAnalyticsAgent
     
     shared_context = MedicalReportAgent().run(shared_context)
     shared_context = NutritionAgent().run(shared_context)
