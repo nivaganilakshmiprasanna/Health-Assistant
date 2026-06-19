@@ -4,7 +4,7 @@ import logging
 import base64
 import io
 import httpx
-from backend.app.config import GROQ_API_KEY
+from app.config import GROQ_API_KEY
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
