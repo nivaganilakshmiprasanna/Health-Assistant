@@ -288,7 +288,3 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 Made with ❤️ for better healthcare access through AI
 
 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> d157e98e (update project files)
