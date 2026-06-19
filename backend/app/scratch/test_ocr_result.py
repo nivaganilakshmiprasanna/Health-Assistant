@@ -4,7 +4,7 @@ import sys
 # Ensure backend path is in Python path
 sys.path.append("c:\\Users\\DELL\\Desktop\\multi health ai")
 
-from backend.app.utils.ocr import perform_ocr
+from app.utils.ocr import perform_ocr
 
 def main():
     file_path = "c:\\Users\\DELL\\Desktop\\multi health ai\\backend\\uploads\\prescription_1_20260618135512_Screenshot_2026-06-18_135503.png"
