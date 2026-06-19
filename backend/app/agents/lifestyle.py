@@ -1,6 +1,6 @@
 import json
 import logging
-from backend.app.utils.groq_client import generate_text
+from app.utils.groq_client import generate_text
 
 logger = logging.getLogger(__name__)
 
