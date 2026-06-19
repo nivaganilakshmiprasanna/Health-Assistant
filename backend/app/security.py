@@ -3,7 +3,7 @@ import jwt
 import bcrypt
 from datetime import timedelta
 from typing import Union, Dict, Any
-from backend.app.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
+from app.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
 # Password security
 def verify_password(plain_password: str, hashed_password: str) -> bool:
