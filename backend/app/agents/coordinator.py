@@ -128,7 +128,7 @@ class CoordinatorAgent:
         """
         
         try:
-            return generate_text(prompt, model_name="gemini-2.5-flash")
+            return generate_text(prompt, model_name="llama-3.3-70b-versatile")
         except Exception as e:
             logger.error(f"Error compiling final response: {str(e)}")
             

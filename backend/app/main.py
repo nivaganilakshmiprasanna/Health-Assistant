@@ -883,7 +883,9 @@ def log_lifestyle(log_data: LifestyleLogCreate, current_user: User = Depends(get
                 report_score=analytics.get("report_score", 100),
                 medication_score=analytics.get("medication_score", 100),
                 lifestyle_score=analytics.get("lifestyle_score", 100),
-                goal_score=analytics.get("goal_score", 100)
+                goal_score=analytics.get("goal_score", 100),
+                recommendations=json.dumps(analytics.get("recommendations", [])),
+                future_risks=json.dumps(analytics.get("future_risks", []))
             )
             db.add(db_score)
         db.commit()
@@ -1128,7 +1130,17 @@ def process_voice_transcript(
             db_score.recommendations = recs_str
             db_score.future_risks = risks_str
         else:
-            db.add(HealthScore(user_id=current_user.id, score_date=today, overall_score=analytics.get("overall_score", 100), recommendations=recs_str, future_risks=risks_str))
+            db.add(HealthScore(
+                user_id=current_user.id,
+                score_date=today,
+                overall_score=analytics.get("overall_score", 100),
+                report_score=analytics.get("report_score", 100),
+                medication_score=analytics.get("medication_score", 100),
+                lifestyle_score=analytics.get("lifestyle_score", 100),
+                goal_score=analytics.get("goal_score", 100),
+                recommendations=recs_str,
+                future_risks=risks_str
+            ))
     db.commit()
     
     # 2. Synthesize short spoken summary (conversational, brief, max 2-3 sentences)
@@ -1141,7 +1153,7 @@ def process_voice_transcript(
     Provide a highly conversational, short, and friendly spoken response (2-3 sentences max) that summarizes the key recommendation for the user. Do not use markdown format or bullet points; this will be spoken aloud to the user.
     """
     try:
-        spoken_response = generate_text(spoken_prompt, model_name="gemini-2.5-flash")
+        spoken_response = generate_text(spoken_prompt, model_name="llama-3.3-70b-versatile")
     except Exception:
         spoken_response = "I have updated your health assessment recommendations on the screen. Please review them."
         
