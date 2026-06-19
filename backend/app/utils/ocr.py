@@ -2,7 +2,7 @@ import os
 import logging
 import pdfplumber
 from PIL import Image
-from backend.app.utils.groq_client import generate_multimodal
+from app.utils.groq_client import generate_multimodal
 
 logger = logging.getLogger(__name__)
 
