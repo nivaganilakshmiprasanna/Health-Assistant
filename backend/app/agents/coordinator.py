@@ -2,15 +2,15 @@ import json
 import logging
 from typing import List, Dict, Any
 
-from backend.app.utils.groq_client import generate_text
-from backend.app.agents.assessment import HealthAssessmentAgent
-from backend.app.agents.report import MedicalReportAgent
-from backend.app.agents.medication import MedicationAgent
-from backend.app.agents.nutrition import NutritionAgent
-from backend.app.agents.lifestyle import LifestyleAgent
-from backend.app.agents.emergency import EmergencyAgent
-from backend.app.agents.goal_planning import GoalPlanningAgent
-from backend.app.agents.analytics import ProgressAnalyticsAgent
+from app.utils.groq_client import generate_text
+from app.agents.assessment import HealthAssessmentAgent
+from app.agents.report import MedicalReportAgent
+from app.agents.medication import MedicationAgent
+from app.agents.nutrition import NutritionAgent
+from app.agents.lifestyle import LifestyleAgent
+from app.agents.emergency import EmergencyAgent
+from app.agents.goal_planning import GoalPlanningAgent
+from app.agents.analytics import ProgressAnalyticsAgent
 
 logger = logging.getLogger(__name__)
 
